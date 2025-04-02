@@ -1,1 +1,5 @@
-<p>missionfilter works!</p>
+<div class="filter-container">
+    <label for="year">Filter by Year:</label>
+    <input type="text" #yearInput (input)="filterMissionByYear(yearInput.value)">
+</div>
+  

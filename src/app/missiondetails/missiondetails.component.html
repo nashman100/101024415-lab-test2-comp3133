@@ -1,1 +1,40 @@
-<p>missiondetails works!</p>
+<div *ngIf="mission" class="mission-details">
+  <div class="mission-header">
+      <img [src]="mission.links.mission_patch_small" alt="Mission Patch" class="mission-patch">
+      <div class="mission-info">
+          <h2>{{ mission.mission_name }}</h2>
+          <p>Launch Date: {{ mission.launch_date_utc | date: 'longDate' }} at {{ mission.launch_date_utc | date: 'shortTime' }}</p>
+          <p>Flight Number: {{ mission.flight_number }}</p>
+      </div>
+  </div>
+
+  <div class="details-container">
+      <div class="details-left">
+          <h3>Launch Site</h3>
+          <p>Location: {{ mission.launch_site.site_name_long }}</p>
+      </div>
+      <div class="details-right">
+          <h3>Rocket</h3>
+          <p>Name: {{ mission.rocket.rocket_name }}</p>
+          <p>Type: {{ mission.rocket.rocket_type }}</p>
+      </div>
+  </div>
+
+  <h3>Launch Details</h3>
+  <p>{{ mission.details }}</p>
+
+  <h3>More Information</h3>
+  <div class="mission-links">
+      <a [href]="mission.links.article_link" target="_blank" title="Read Article">
+          <i class="fas fa-newspaper" style="color: black; font-size: 2rem;"></i>
+      </a>
+      <a [href]="mission.links.wikipedia" target="_blank" title="Wikipedia">
+          <i class="fab fa-wikipedia-w" style="color: #636466; font-size: 2rem;"></i>
+      </a>
+      <a [href]="mission.links.video_link" target="_blank" title="Watch on YouTube">
+          <i class="fab fa-youtube" style="color: #FF0000; font-size: 2rem;"></i>
+      </a>
+  </div>
+
+  <button (click)="onBackClick()">Back to Mission List</button>
+</div>
